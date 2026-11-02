@@ -6,6 +6,13 @@ theme:
     - navigation.instant
     - navigation.tracking
     - search.highlight
+nav:
+  - はじめに: index.md
+  - Step 1 (基盤・IAM): step1-infra.md
+  - Step 2 (Bedrock連携): step2-bedrock.md
+  - Step 3 (Docker & Caddy): step3-docker-caddy.md
+  - Step 4 (セキュリティ): step4-security.md
+  - Step 5 (高度な設定・運用): step5-advanced.md
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
