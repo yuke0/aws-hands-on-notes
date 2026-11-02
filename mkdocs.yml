@@ -1,11 +1,58 @@
 site_name: AWS Hands-on & Architecture Notes
+site_description: AWS (Sydney) 上の FastAPI + Bedrock + Docker/Caddy + CloudFront ハンズオン手順書
+site_url: https://yuke0.github.io/aws-hands-on-notes/
+repo_url: https://github.com/yuke0/aws-hands-on-notes
+repo_name: yuke0/aws-hands-on-notes
+edit_uri: edit/main/docs/
+copyright: © 2026 yuke0
+
 theme:
   name: material
   language: ja
+  font:
+    text: Noto Sans JP
+    code: JetBrains Mono
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: ダークモードに切り替え
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: ライトモードに切り替え
+  icon:
+    repo: fontawesome/brands/github
   features:
     - navigation.instant
+    - navigation.instant.progress
     - navigation.tracking
+    - navigation.top
+    - navigation.footer
+    - toc.follow
     - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.tabs.link
+
+plugins:
+  - search:
+      lang:
+        - ja
+        - en
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  generator: false
+
 nav:
   - はじめに: index.md
   - Step 1 (基盤・IAM): step1-infra.md
@@ -13,9 +60,31 @@ nav:
   - Step 3 (Docker & Caddy): step3-docker-caddy.md
   - Step 4 (セキュリティ): step4-security.md
   - Step 5 (高度な設定・運用): step5-advanced.md
+
 markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.details
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - admonition
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
